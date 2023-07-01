@@ -1,0 +1,57 @@
+﻿@using MVCLIBRARY.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBL_EMPLOYEE>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Personeller Sayfası</h2>
+
+@*-------------------------------------------------------------------*@
+@using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+{
+    <div style="margin-bottom:15px">
+        <b>Personel Adını Girin:</b>
+        @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </div>
+}
+@*-------------------------------------------------------------------*@
+
+
+<table class="table table-bordered table-dark table-hover">
+    <tr style="background-color:#3159b5;color:#ffffff">
+        <th  style="text-align:center">ID</th>
+        <th style="text-align:center">PERSONEL ADI</th>
+        <th style="text-align:center">MAİL BİLGİLERİ</th>              @*KAYITLARIN GÖSTERİLECEĞİ TABLODA BULUNACAK SÜTUNLARI TANIMLADIK.*@
+        <th style="text-align:center">TELEFON BİLGİLERİ</th>
+        <th style="text-align:center">ADRES BİLGİLERİ</th>
+        <th style="text-align:center">ÇALIŞTIĞI KÜTÜPHANE</th>
+        <th style="text-align:center">SİL</th>
+        <th style="text-align:center">GÜNCELLE</th>
+    </tr>
+
+
+    @foreach (var employee in Model)
+    {
+<tr>
+    <td>@employee.ID</td>
+    <td>@employee.NAME&nbsp;@employee.SURNAME</td>         @*Personel bilgilerini sütunlara göre employee adındaki değişken ile getirdik. *@
+    <td>@employee.MAIL </td>
+    <td>@employee.TELEPHONENUM</td>
+    <td>@employee.ADDRESS</td>
+    <td>@employee.TBL_LIBRARY.NAME</td>
+    <td>@Html.ActionLink("SİL", "EmployeeDelete", new { id = employee.ID }, new { @class = "btn btn-danger", onclick = "return confirm('SİLMEK İSTİYOR MUSUNUZ?')" })</td> @*sil butonu için*@
+    <td><a href="/Employee/EmployeeGet/@employee.ID" class="btn btn-success">GÜNCELLE</a></td> @*güncelle butonu için*@
+</tr>
+
+    }
+</table>
+
+@*-------------------------------------------------------------------*@
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+@*-------------------------------------------------------------------*@
+<a class="btn btn-primary" href="/Employee/EmployeeAdd">YENİ PERSONEL EKLE</a> 
+@*-------------------------------------------------------------------------*@

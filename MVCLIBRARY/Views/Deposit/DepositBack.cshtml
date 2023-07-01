@@ -1,0 +1,59 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_DEPOSIT
+@{
+    ViewBag.Title = "DepositBack";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Ödünç Geri Alma Sayfası</h2>
+
+
+@using (Html.BeginForm("DepositUpdate", "Deposit", FormMethod.Post))
+{
+    <div style=" margin-bottom:15px"></div>
+    <div class=" =" form-group>
+        @*-------------------------------------------------------------------------------------------------------------------------------*@
+        <label>Hareket ID</label>
+        @Html.TextBoxFor(deposit => deposit.ID, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Kitap Adı</label>
+        @Html.TextBoxFor(deposit => deposit.TBL_BOOK.NAME, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Üye Adı</label>
+        @Html.TextBoxFor(deposit => deposit.TBL_USER.NAME, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Personel Adı</label>
+        @Html.TextBoxFor(deposit => deposit.TBL_EMPLOYEE.NAME, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Kütüphane Adı</label>
+        @Html.TextBoxFor(deposit => deposit.TBL_LIBRARY.NAME, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Alış Tarihi</label>
+        @Html.TextBoxFor(deposit => deposit.STARTTIME, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Normal İade Tarihi</label>
+        @Html.TextBoxFor(deposit => deposit.ENDTIME, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Üyenin Getirdiği Tarih</label>
+        <input type="text" class="form-control" name="USERGETTIME" value="@DateTime.Now.ToShortDateString()" />
+    </div>
+    <div>
+         <label>Geç Gelen Gün Sayısı</label>
+         <input type="text" class="form-control" id="gecinput" value="@ViewBag.dgr" />  @* class=form-control ile modern bootstrap görünümü elde ederiz. koymazsak klasik html girdi alanı görüntülenir.*@
+    </div>
+
+    @*-------------------------------------------------------------------------------------------------------------------------------*@
+    <div style="margin-top:15px">
+        <button class="btn btn-group" id="Btn1" style="background-color:#64d8ca; color: white">ÖDÜNÇ KİTABI GERİ AL</button>
+    </div>
+    @*--------------------------------------------------------------------------------------------------------------------------------*@
+
+
+}
+

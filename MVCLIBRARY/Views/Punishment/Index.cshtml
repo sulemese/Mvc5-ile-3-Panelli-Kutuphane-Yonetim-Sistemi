@@ -1,0 +1,35 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_PUNISHMENT>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2 style="text-align:center">Ceza Ödeme Sayfası</h2>
+
+<table class="table table-bordered table-dark table-striped table-hover">
+    <tr style="background-color:#3159b5;color:#ffffff">
+        <th>CEZA ID</th>
+        <th>ÜYE</th>
+        @*<th>HAREKET ID</th>*@
+        <th>CEZA BAŞLANGIÇ TARİHİ</th>
+        <th>CEZA BİTİŞ TARİHİ</th>
+        <th>TUTAR</th>
+        <th>CEZAYI ÖDE</th>
+
+    </tr>
+    @foreach (var ceza in Model)
+    {
+<tr>
+    <td>@ceza.ID</td>
+    <td>@ceza.TBL_USER.NAME @ceza.TBL_USER.SURNAME</td>
+    @*<td>@ceza.DEPOSITID</td>*@
+    <td>@Convert.ToDateTime(ceza.STARTTIME).ToString("dd/MM/yyyy")</td>
+    <td>@Convert.ToDateTime(ceza.ENDTIME).ToString("dd/MM/yyyy")</td>
+    <td>@ceza.PRICE</td>
+
+    <td><a href="/Punishment/CezaOde/@ceza.ID" class="btn btn-default" style="background-color: #64d8ca; color: white">Cezayı Öde</a></td>
+</tr>
+    }
+
+</table>

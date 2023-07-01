@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LIBRARYDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TBL_ABOUT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TBL_ADMİN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USERNAME" Type="varchar" MaxLength="20" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="20" />
+    <Property Name="AUTHORITY" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TBL_AUTHOR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="50" />
+    <Property Name="DETAIL" Type="varchar" MaxLength="1000" />
+    <Property Name="STATUS" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBL_BOOK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="CATEGORYID" Type="int" />
+    <Property Name="AUTHORID" Type="int" Nullable="false" />
+    <Property Name="LIBRARYID" Type="int" />
+    <Property Name="PUBLISHERID" Type="int" />
+    <Property Name="PAGE" Type="int" />
+    <Property Name="PRINTYEAR" Type="nchar" MaxLength="4" />
+    <Property Name="LANGUAGEID" Type="int" />
+    <Property Name="DESCRIPTION" Type="varchar" MaxLength="8000" />
+    <Property Name="STATUS" Type="bit" />
+    <Property Name="PICTURE" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBL_CATEGORY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="STATUS" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBL_CONTACT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="MAIL" Type="varchar" MaxLength="50" />
+    <Property Name="SUBJECT" Type="varchar" MaxLength="50" />
+    <Property Name="MESSAGE" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="TBL_DEPOSIT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BOOKID" Type="int" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="EMPLOYEEID" Type="int" />
+    <Property Name="LIBRARYID" Type="int" />
+    <Property Name="STARTTIME" Type="smalldatetime" />
+    <Property Name="ENDTIME" Type="smalldatetime" />
+    <Property Name="USERGETTIME" Type="smalldatetime" />
+    <Property Name="TRANSACTIONSTATUS" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBL_EMPLOYEE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="50" />
+    <Property Name="MAIL" Type="varchar" MaxLength="50" />
+    <Property Name="LIBRARYID" Type="int" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
+    <Property Name="USERNAME" Type="varchar" MaxLength="50" />
+    <Property Name="ADDRESS" Type="varchar" MaxLength="150" />
+    <Property Name="TELEPHONENUM" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBL_LANGUAGE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBL_LIBRARY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="150" />
+    <Property Name="ADDRESS" Type="varchar" MaxLength="150" />
+    <Property Name="TELEPHONENUM" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBL_MESSAGES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GÖNDEREN" Type="varchar" MaxLength="50" />
+    <Property Name="ALICI" Type="varchar" MaxLength="50" />
+    <Property Name="KONU" Type="varchar" MaxLength="50" />
+    <Property Name="ICERIK" Type="varchar" MaxLength="200" />
+    <Property Name="TARİH" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="TBL_NOTIFICATION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CATEGORY" Type="varchar" MaxLength="50" />
+    <Property Name="CONTENT" Type="varchar" MaxLength="200" />
+    <Property Name="DATE" Type="date" />
+  </EntityType>
+  <EntityType Name="TBL_PUBLISHER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBL_PUNISHMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USERID" Type="int" />
+    <Property Name="DEPOSITID" Type="int" />
+    <Property Name="STARTTIME" Type="datetime" />
+    <Property Name="ENDTIME" Type="datetime" />
+    <Property Name="PRICE" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LIBRARYDB.dbo.TBL_TILL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBL_TILL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MONTH" Type="int" />
+    <Property Name="PRICE" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="TBL_USER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="SURNAME" Type="varchar" MaxLength="50" />
+    <Property Name="MAIL" Type="varchar" MaxLength="50" />
+    <Property Name="USERNAME" Type="varchar" MaxLength="50" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
+    <Property Name="PHOTOGRAPH" Type="varchar" MaxLength="250" />
+    <Property Name="TELEPHONENUM" Type="varchar" MaxLength="50" />
+    <Property Name="SCHOOL" Type="varchar" MaxLength="50" />
+    <Property Name="STATUS" Type="bit" />
+  </EntityType>
+  <Association Name="FK_TBL_BOOK_TBL_AUTHOR">
+    <End Role="TBL_AUTHOR" Type="Self.TBL_AUTHOR" Multiplicity="1" />
+    <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_AUTHOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_BOOK">
+        <PropertyRef Name="AUTHORID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_BOOK_TBL_CATEGORY">
+    <End Role="TBL_CATEGORY" Type="Self.TBL_CATEGORY" Multiplicity="0..1" />
+    <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_CATEGORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_BOOK">
+        <PropertyRef Name="CATEGORYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_BOOK_TBL_LANGUAGE">
+    <End Role="TBL_LANGUAGE" Type="Self.TBL_LANGUAGE" Multiplicity="0..1" />
+    <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_LANGUAGE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_BOOK">
+        <PropertyRef Name="LANGUAGEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_BOOK_TBL_LIBRARY">
+    <End Role="TBL_LIBRARY" Type="Self.TBL_LIBRARY" Multiplicity="0..1" />
+    <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_LIBRARY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_BOOK">
+        <PropertyRef Name="LIBRARYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_BOOK_TBL_PUBLISHER">
+    <End Role="TBL_PUBLISHER" Type="Self.TBL_PUBLISHER" Multiplicity="0..1" />
+    <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_PUBLISHER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_BOOK">
+        <PropertyRef Name="PUBLISHERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_DEPOSIT_TBL_BOOK">
+    <End Role="TBL_BOOK" Type="Self.TBL_BOOK" Multiplicity="0..1" />
+    <End Role="TBL_DEPOSIT" Type="Self.TBL_DEPOSIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_BOOK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_DEPOSIT">
+        <PropertyRef Name="BOOKID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_DEPOSIT_TBL_EMPLOYEE">
+    <End Role="TBL_EMPLOYEE" Type="Self.TBL_EMPLOYEE" Multiplicity="0..1" />
+    <End Role="TBL_DEPOSIT" Type="Self.TBL_DEPOSIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_EMPLOYEE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_DEPOSIT">
+        <PropertyRef Name="EMPLOYEEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_DEPOSIT_TBL_LIBRARY">
+    <End Role="TBL_LIBRARY" Type="Self.TBL_LIBRARY" Multiplicity="0..1" />
+    <End Role="TBL_DEPOSIT" Type="Self.TBL_DEPOSIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_LIBRARY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_DEPOSIT">
+        <PropertyRef Name="LIBRARYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_DEPOSIT_TBL_USER">
+    <End Role="TBL_USER" Type="Self.TBL_USER" Multiplicity="0..1" />
+    <End Role="TBL_DEPOSIT" Type="Self.TBL_DEPOSIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_DEPOSIT">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_EMPLOYEE_TBL_LIBRARY">
+    <End Role="TBL_LIBRARY" Type="Self.TBL_LIBRARY" Multiplicity="0..1" />
+    <End Role="TBL_EMPLOYEE" Type="Self.TBL_EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_LIBRARY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_EMPLOYEE">
+        <PropertyRef Name="LIBRARYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_TILL_TBL_DEPOSIT">
+    <End Role="TBL_DEPOSIT" Type="Self.TBL_DEPOSIT" Multiplicity="0..1" />
+    <End Role="TBL_PUNISHMENT" Type="Self.TBL_PUNISHMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_DEPOSIT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_PUNISHMENT">
+        <PropertyRef Name="DEPOSITID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_TILL_TBL_USER">
+    <End Role="TBL_USER" Type="Self.TBL_USER" Multiplicity="0..1" />
+    <End Role="TBL_PUNISHMENT" Type="Self.TBL_PUNISHMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBL_PUNISHMENT">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="BUGUNKU_EMANETLER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="EN_IYI_YAYINEVI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ENAKTIFUYE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ENBASARILIPERSONEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ENCOKOKUNANKITAP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ENFAZLAKITAPYAZAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="LIBRARYDBModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_ABOUT" EntityType="Self.TBL_ABOUT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_ADMİN" EntityType="Self.TBL_ADMİN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_AUTHOR" EntityType="Self.TBL_AUTHOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_BOOK" EntityType="Self.TBL_BOOK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_CATEGORY" EntityType="Self.TBL_CATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_CONTACT" EntityType="Self.TBL_CONTACT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_DEPOSIT" EntityType="Self.TBL_DEPOSIT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_EMPLOYEE" EntityType="Self.TBL_EMPLOYEE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_LANGUAGE" EntityType="Self.TBL_LANGUAGE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_LIBRARY" EntityType="Self.TBL_LIBRARY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_MESSAGES" EntityType="Self.TBL_MESSAGES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_NOTIFICATION" EntityType="Self.TBL_NOTIFICATION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PUBLISHER" EntityType="Self.TBL_PUBLISHER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PUNISHMENT" EntityType="Self.TBL_PUNISHMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_USER" EntityType="Self.TBL_USER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_TILL" EntityType="Self.TBL_TILL" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TBL_TILL].[ID] AS [ID], 
+    [TBL_TILL].[MONTH] AS [MONTH], 
+    [TBL_TILL].[PRICE] AS [PRICE]
+    FROM [dbo].[TBL_TILL] AS [TBL_TILL]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_TBL_BOOK_TBL_AUTHOR" Association="Self.FK_TBL_BOOK_TBL_AUTHOR">
+      <End Role="TBL_AUTHOR" EntitySet="TBL_AUTHOR" />
+      <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_BOOK_TBL_CATEGORY" Association="Self.FK_TBL_BOOK_TBL_CATEGORY">
+      <End Role="TBL_CATEGORY" EntitySet="TBL_CATEGORY" />
+      <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_BOOK_TBL_LANGUAGE" Association="Self.FK_TBL_BOOK_TBL_LANGUAGE">
+      <End Role="TBL_LANGUAGE" EntitySet="TBL_LANGUAGE" />
+      <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_BOOK_TBL_LIBRARY" Association="Self.FK_TBL_BOOK_TBL_LIBRARY">
+      <End Role="TBL_LIBRARY" EntitySet="TBL_LIBRARY" />
+      <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_BOOK_TBL_PUBLISHER" Association="Self.FK_TBL_BOOK_TBL_PUBLISHER">
+      <End Role="TBL_PUBLISHER" EntitySet="TBL_PUBLISHER" />
+      <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_DEPOSIT_TBL_BOOK" Association="Self.FK_TBL_DEPOSIT_TBL_BOOK">
+      <End Role="TBL_BOOK" EntitySet="TBL_BOOK" />
+      <End Role="TBL_DEPOSIT" EntitySet="TBL_DEPOSIT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_DEPOSIT_TBL_EMPLOYEE" Association="Self.FK_TBL_DEPOSIT_TBL_EMPLOYEE">
+      <End Role="TBL_EMPLOYEE" EntitySet="TBL_EMPLOYEE" />
+      <End Role="TBL_DEPOSIT" EntitySet="TBL_DEPOSIT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_DEPOSIT_TBL_LIBRARY" Association="Self.FK_TBL_DEPOSIT_TBL_LIBRARY">
+      <End Role="TBL_LIBRARY" EntitySet="TBL_LIBRARY" />
+      <End Role="TBL_DEPOSIT" EntitySet="TBL_DEPOSIT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_DEPOSIT_TBL_USER" Association="Self.FK_TBL_DEPOSIT_TBL_USER">
+      <End Role="TBL_USER" EntitySet="TBL_USER" />
+      <End Role="TBL_DEPOSIT" EntitySet="TBL_DEPOSIT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_EMPLOYEE_TBL_LIBRARY" Association="Self.FK_TBL_EMPLOYEE_TBL_LIBRARY">
+      <End Role="TBL_LIBRARY" EntitySet="TBL_LIBRARY" />
+      <End Role="TBL_EMPLOYEE" EntitySet="TBL_EMPLOYEE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_TILL_TBL_DEPOSIT" Association="Self.FK_TBL_TILL_TBL_DEPOSIT">
+      <End Role="TBL_DEPOSIT" EntitySet="TBL_DEPOSIT" />
+      <End Role="TBL_PUNISHMENT" EntitySet="TBL_PUNISHMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_TILL_TBL_USER" Association="Self.FK_TBL_TILL_TBL_USER">
+      <End Role="TBL_USER" EntitySet="TBL_USER" />
+      <End Role="TBL_PUNISHMENT" EntitySet="TBL_PUNISHMENT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

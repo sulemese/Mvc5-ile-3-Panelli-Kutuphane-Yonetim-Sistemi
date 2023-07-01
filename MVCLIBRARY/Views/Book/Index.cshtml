@@ -1,0 +1,68 @@
+﻿@using MVCLIBRARY.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBL_BOOK>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<h2>Kitaplar Sayfası</h2>
+
+@*-------------------------------------------------------------------*@
+
+@using (Html.BeginForm("Index", "Book", FormMethod.Get))
+{
+    <div style="margin-bottom:15px">
+        <b>Kitap Adını Girin:</b>
+        @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </div>
+}
+
+@*-------------------------------------------------------------------*@
+<table class="table table-bordered table-dark table-striped table-hover">
+    <tr style="background-color:#3159b5;color:#ffffff">
+        <th style="text-align:center">ID</th>
+        <th style="text-align:center">KİTAP ADI</th>
+        <th style="text-align:center">YAZARI</th>
+        <th style="text-align:center">KATEGORİSİ</th>
+        <th style="text-align:center">BASIM YILI</th>
+        <th style="text-align:center">YAYINEVİ</th>
+        <th style="text-align:center">SAYFA</th>
+        <th style="text-align:center">DURUM</th>
+        <th style="text-align:center">KİTABIN DİLİ </th>
+        <th style="text-align:center">BULUNDUĞU KÜTÜPHANE</th>
+        <th style="text-align:center">AÇIKLAMASI</th>
+        <th style="text-align:center">SİL</th>
+        <th style="text-align:center">GÜNCELLE</th>
+    </tr>
+
+     
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.ID</td>
+            <td>@book.NAME</td>
+            <td>@book.TBL_AUTHOR.NAME &nbsp @book.TBL_AUTHOR.SURNAME</td>
+            <td>@book.TBL_CATEGORY.NAME</td>
+            <td>@book.PRINTYEAR</td>
+            <td>@book.TBL_PUBLISHER.NAME</td>
+            <td>@book.PAGE</td>
+            <td>@book.STATUS</td>
+            <td>@book.TBL_LANGUAGE.NAME</td>
+            <td>@book.TBL_LIBRARY.NAME.</td>
+            <td>@book.DESCRIPTION</td>
+            <td>@Html.ActionLink("SİL", "BookDelete", new { id = book.ID }, 
+               new { @class = "btn btn-danger", 
+                   onclick = "return confirm('SİLMEK İSTİYOR MUSUNUZ?')" })</td>
+            <td><a href="/Book/BookGet/@book.ID" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+
+    }
+</table>
+
+
+@*-------------------------------------------------------------------*@
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+@*-------------------------------------------------------------------*@
+<a class="btn btn-primary" href="/Book/BookAdd">YENİ KİTAP EKLE</a>

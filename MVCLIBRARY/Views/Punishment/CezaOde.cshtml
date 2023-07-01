@@ -1,0 +1,23 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_PUNISHMENT
+@{
+    ViewBag.Title = "CezaOde";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("PunishmentUpdate", "Punishment", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            @Html.HiddenFor(m => m.ID)
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Tutar</label>
+            @Html.TextBoxFor(category => category.PRICE, new { @class = "form-control" }) 
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-warning">GÜNCELLE</button>  @*güncelle butonu*@
+    </div>
+}
+

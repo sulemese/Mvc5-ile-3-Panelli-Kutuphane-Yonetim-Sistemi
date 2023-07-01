@@ -1,0 +1,46 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_USER>
+
+
+
+
+
+@{
+    ViewBag.Title = "RemovedUserIndex";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+
+@*Sayfaya başlık eklendi.*@
+<h2>Silinen Üyeler</h2>
+
+
+
+@*Kayıtların listelenmesi için bir tablo oluşturuldu *@
+<table class="table table-bordered table-dark  table-hover">
+
+    @*tablonun başlık satırı içindeki sütunlar tanımlandı. *@
+    <tr style="background-color:#3159b5;color:#ffffff">
+        <th style="text-align:center">ID</th>
+        <th style="text-align:center">ÜYE ADI</th>
+        <th style="text-align:center">OKUDUĞU OKUL</th>
+        <th style="text-align:center">KİTAP GEÇMİŞİ</th>
+        <th style="text-align:center">GERİ EKLE</th>
+    </tr>
+
+
+    @*Bütün kayıtlar için satır ve sütunları tanımlamak mantıksız olacağından foreach döngüsü içinde satır ve onun sütunları tanımlandı. *@
+    @*Bu döngü kayıt sayısı kadar dönecek ve kayıt sayısı kadar tabloya satır ekleyecek. *@
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.ID</td>
+            <td>@user.NAME&nbsp;@user.SURNAME</td>
+            <td>@user.SCHOOL </td>
+            <td><a href="/User/UserBookDetail/@user.ID" class="btn btn-success" style="background-color:lightseagreen">KİTAP GEÇMİŞİ</a></td>
+            <td><a href="/User/UserAddBack/@user.ID" class="btn btn-success" style="background-color:lightseagreen">GERİ EKLE</a></td>
+        </tr>
+    }
+</table>

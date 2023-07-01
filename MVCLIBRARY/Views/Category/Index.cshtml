@@ -1,0 +1,79 @@
+﻿@using MVCLIBRARY.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBL_CATEGORY>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+
+@*Sayfaya başlık eklendi.*@
+<h2>Kategoriler</h2>
+
+
+
+
+
+@*Bu form metod get olduğunda yani veri girişi olduğunda Category controllerı içindeki Index action resultı çalışacak. *@
+@using (Html.BeginForm("Index", "Category", FormMethod.Get))
+{
+     @*margin-bottom özelliği elementin alt kenar boşluğunu belli bir değer kadar veya yüzde olarak belirler.*@
+    <div style="margin-bottom:15px">
+        @*Başlık eklendi. *@
+        <b>Kategori Adını Girin:</b> 
+        @*textbox eklendi.*@
+        @Html.TextBox("p") 
+        @*onay butonu eklendi. değeri ise "Ara" olarak belirlendi. *@
+        <input type="submit" value="Ara" /> 
+    </div>
+}
+
+
+
+
+
+@*Kayıtların listelenmesi için bir tablo oluşturuldu *@
+<table class="table table-dark table-striped table-hover">
+
+    @*tablonun başlık satırı içindeki sütunlar tanımlandı. *@
+    <tr style="background-color:#3159b5;color:#ffffff">
+        <th width="200">ID</th>
+        <th width="600">KATEGORİ ADI</th>
+        <th width="200">SİL</th>
+        <th width="200">GÜNCELLE</th>
+    </tr>
+
+    @*Bütün kayıtlar için satır ve sütunları tanımlamak mantıksız olacağından foreach döngüsü içinde satır ve onun sütunları tanımlandı. *@
+    @*Bu döngü kayıt sayısı kadar dönecek ve kayıt sayısı kadar tabloya satır ekleyecek. *@
+    @foreach (var kategori in Model)
+    {
+        <tr>
+            <td>@kategori.ID</td>
+            <td style="text-align:justify">@kategori.NAME</td>
+            @*html.actionlink ile "SİL" butonuna tıklandığında sistem bilgi mesajı verir. Devam edildiğinde  CategoryDelete action resultı o an işlem yapılan kaydın idsini parametre alarak  çalışır.  *@
+            <td>@Html.ActionLink("SİL", "CategoryDelete", new { id = kategori.ID }, new { @class = "btn btn-danger", onclick = "return confirm('SİLMEK İSTİYOR MUSUNUZ?')" })</td>
+            @*Güncelle butonuna tıklandığında Category controllerındaki CategoryGet() action resultı ID parametresi alarak çalışır. *@
+            <td><a href="/Category/CategoryGet/@kategori.ID" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+    }
+</table>
+
+
+@*Paged list için*@
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+
+
+@*Sayfanın en altında YENİ KATEGORİ EKLE butonu/linki yer alır. Bu linke tıklandığında Category controllerındaki categoryAdd() action resultı çalışır. *@
+<a href="/Category/CategoryAdd/" class="btn btn-primary">YENİ KATEGORİ EKLE</a>
+
+
+
+@*Sayfanın en altında SİLİNEN KATEGORİLER butonu/linki yer alır. Bu linke tıklandığında Category controllerındaki RemovedCategoryIndex() action resultı çalışır. *@
+<a href="/Category/RemovedCategoryIndex/" class="btn btn-primary">SİLİNEN KATEGORİLER</a>
+
+

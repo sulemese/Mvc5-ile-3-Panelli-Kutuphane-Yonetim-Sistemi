@@ -1,0 +1,44 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_DEPOSIT>
+
+
+
+@{
+    ViewBag.Title = "UserBookDetail";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+@*sayfanın başlığı*@
+<br />
+<h2>ÜYE: @ViewBag.username</h2>
+<br />
+
+
+
+@*alınan kitapların listesi tablo halinde gösterildi.*@
+<table class="table table-bordered table-dark table-striped table-hover">
+        
+    @*tablonun sütun başlıkları tanımlandı*@
+    <tr style="background-color:#3159b5;color:#ffffff">
+        <th>KİTAP ADI</th>
+        <th>PERSONEL</th>
+        <th>ALIŞ TARİHİ</th>
+        <th>SON İADE TARİHİ</th>
+        <th>İADE EDİLDİĞİ TARİH</th>
+    </tr>
+
+
+    @*kayıtlar için bir foreach döngüsü oluşturuldu. Bu döngü kayıt sayısı kadar döner. Her döndüğünde ilgili kitabın bilgilerini tabloya ekler. *@
+    @foreach (var deposit in Model)
+    {
+        <tr>
+            <td>@deposit.TBL_BOOK.NAME</td>
+            <td>@deposit.TBL_EMPLOYEE.NAME&nbsp;@deposit.TBL_EMPLOYEE.SURNAME</td>
+            <td>@Convert.ToDateTime(deposit.STARTTIME).ToString("dd/MM/yyyy")</td>  @*convert yapmamızın sebebi tarihin yanında saatin de gözükmesini engellemek için.*@
+            <td>@Convert.ToDateTime(deposit.ENDTIME).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(deposit.USERGETTIME).ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+</table>

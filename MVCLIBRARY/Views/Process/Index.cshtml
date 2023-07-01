@@ -1,0 +1,39 @@
+﻿
+@using MVCLIBRARY.Models.Entity
+@model List<TBL_DEPOSIT>
+
+@{ 
+   ViewBag.Title = "Index";
+   Layout = "~/Views/Shared/layout.cshtml"; 
+ }
+
+<h2>İadesi Yapılan Kitaplar</h2>
+<div>
+    <br />
+</div>
+
+
+<table class="table table-bordered table-dark table-striped table-hover">
+    <tr style="background-color:#3159b5;color:#ffffff">
+        <th>İşlem Id</th>
+        <th>Kitap Adı</th>
+        <th>Üye Adı</th>
+        <th>Personel Adı</th>
+        <th>Kütüphane Adı</th>
+        <th>Alış Tarihi</th>
+        <th>Üye İade Tarihi</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.ID</td>
+            <td>@k.TBL_BOOK.NAME</td>
+            <td>@k.TBL_USER.NAME &nbsp @k.TBL_USER.SURNAME</td>
+            <td>@k.TBL_EMPLOYEE.NAME</td>
+            <td>@k.TBL_BOOK.TBL_LIBRARY.NAME</td>
+            <td>@Convert.ToDateTime(k.STARTTIME).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(k.USERGETTIME).ToString("dd/MM/yyyy")</td>
+        </tr>
+}
+</table>
+

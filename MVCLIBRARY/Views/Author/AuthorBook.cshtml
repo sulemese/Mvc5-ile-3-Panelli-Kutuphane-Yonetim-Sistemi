@@ -1,0 +1,37 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_BOOK>
+@{
+    ViewBag.Title = "AuthorBook";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+@* yazarın adı soyadı sayfanın başında görüntülenir.*@
+<br />
+<h2>Yazar: @ViewBag.yazarad</h2>
+<br />
+
+
+@* tablo yapısı ile yazarın kitapları listelendi.*@
+<table class="table table-bordered table-dark table-striped table-hover">
+
+    @* tablonun sütun başlıkları tanımlandı *@
+    <tr style="background-color:#3159b5;color:#ffffff">
+        <th style="text-align:center">KİTAP ADI</th>           @*kitabın adı*@
+        <th style="text-align:center">KATEGORİSİ</th>          @*kitabın kategorisi*@
+        <th style="text-align:center">YAYINEVİ</th>            @*kitabın yayınevi*@
+        <th style="text-align:center">BULUNDUĞU KÜTÜPHANE</th> @*kitabın bulunduğu kütüphane adı*@
+    </tr>
+
+    @* her bir kayıt için kod yazmak yerine foreach döngüsü ile kayıt sayısı kadar döngü döner.*@
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.NAME</td>                 @*kitabın adı*@
+            <td>@book.TBL_CATEGORY.NAME</td>    @*kitabın kategorisinin adı*@
+            <td>@book.TBL_PUBLISHER.NAME</td>   @*kitabın yayınevi adı*@
+            <td>@book.TBL_LIBRARY.NAME.</td>    @*kitabın bulunduğu kütüphane adı*@       
+        </tr>
+    }
+</table>
+

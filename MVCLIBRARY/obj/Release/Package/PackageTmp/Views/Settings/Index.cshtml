@@ -1,0 +1,155 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_ADMİN>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Projects</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <br />
+    <section class="content">
+        <!-- Default box -->
+        <div class="card" style="width:90%;margin:auto">
+            <!--<div class="card-header">-->
+            @*<h3 class="card-title">Projects</h3>*@
+            @*<div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>*@
+            <!--</div>-->
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 3%">
+                                ID
+                            </th>
+                            <th style="width: 10%">
+                                Kullanıcı Adı
+                            </th>
+                            @*<th style="width: 8%">
+                                    Avatar
+                                </th>*@
+                            <th style="width: 10%">
+                                Yetki
+                            </th>
+                            <th style="width: 1%">
+                                Sil
+                            </th>
+                            <th style="width: 5%">
+                                Düzenle
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td style="width: 3%">
+                                    @x.ID
+                                </td>
+                                <td style="width: 10%">
+                                    <a>
+                                        @x.USERNAME
+                                    </a>
+                                </td>
+                                <!--<td style="width: 8%">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <img alt="Avatar" class="table-avatar" src="/AdminLTE-3.0.4//dist/img/avatar.png">-->
+                                @*avatar iconu*@
+                                <!--</li>
+                                    </ul>
+                                </td>-->
+                                <td class="project-state" style="width:10%;float:left">
+                                    <span class="badge badge-success" style="font-size:15px">@x.AUTHORITY</span> @*succes ikonu*@
+                                </td>
+                                <td class="project-actions text" style="width:1%">
+                                    <a class="btn btn-danger btn-sm" href="/Settings/DeleteAdmin/@x.ID/" style="font-size:14px">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Sil @*sil butonu*@
+                                    </a>
+                                </td>
+                                <td class="project-actions text" style="width:5%">
+                                    <a class="btn btn-info btn-sm" href="/Settings/UpdateAdmin/@x.ID/" style="font-size:14px;">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle @*düzenle butonu*@
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+
+    <br />
+
+    @*YENİ ADMİN EKLE BUTONU*@
+    <button style="font-size:14px;position:relative;right:-65px" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni Admin Ekle</button>
+    @*YENİ ADMİN EKLE BUTONUNA BASINCA AÇILACAK OLAN POP UP PENCERESİ ADMİN KAYIT İŞLEMİ YAPAN BİR FORM EKRANIDIR. *@
+    <div class="modal" id="Modal1" style="font-size:14px">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title">Admin Ekleme Paneli</h1>
+                </div>
+                <form method="post" action="/Settings/AddAdmin/">
+                    <div class="modal-body">
+                        <label>Kullanıcı Adı</label>
+                        <input type="text" name="USERNAME" class="form-control" />
+                        <br />
+                        <label>Şifre</label>
+                        <input type="text" name="PASSWORD" class="form-control" />
+                        <br />
+                        <label>Yetki</label>
+                        <input type="text" name="AUTHORITY" class="form-control" />
+                        <br />
+                        <button class="btn btn-info" style="font-size:14px">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/AdminLTE-3.0.4/dist/js/demo.js"></script>
+</body>
+</html>
+

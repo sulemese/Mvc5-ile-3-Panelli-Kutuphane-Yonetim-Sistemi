@@ -1,0 +1,89 @@
+﻿@using MVCLIBRARY.Models.Entity
+    @model List<TBL_NOTIFICATION>
+    @{
+        ViewBag.Title = "Duyurular";
+        Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+    }
+
+    @*<h2 style="text-align:center">Duyurular</h2>
+    <table class="table table-light table-striped table-hover">
+        <tr style="background-color:#3159b5;color:#ffffff">
+            <th >KATEGORİ</th>
+            <th style="text-align:center">TARİH</th>
+            <th style="text-align:center">İÇERİK</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.CATEGORY</td>
+                <td style="text-align:center">@Convert.ToDateTime(x.DATE).ToString("dd/MM/yyyy")</td>
+                <td>@x.CONTENT</td>
+            </tr>
+        }
+    </table>*@
+
+
+
+@foreach (var x in Model)
+{
+
+    string a = "";
+    string b = "";
+
+    //if (x.CATEGORY == "Yeni Kitap")
+    //{
+    //    a = "dodgerblue";
+    //    b = "white";
+    //}
+
+    <div class="post">
+
+        <div class="user-block">
+
+            <img class="img-circle img-bordered-sm" src="~/AdminLTE-3.0.4/dist/img/2.png" alt="user image">
+
+            <span class="username">
+
+
+
+                <a href="#" style="background-color:@a;color:@b">@x.CATEGORY</a>
+
+                <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+
+            </span>
+
+            <span class="description">@x.DATE</span>
+
+        </div>
+
+        <!-- /.user-block -->
+
+        <p>
+
+            @x.CONTENT
+
+        </p>
+
+
+
+        @*<p>
+
+            <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
+
+            <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+
+            <span class="float-right">
+
+                <a href="#" class="link-black text-sm">
+
+                    <i class="far fa-comments mr-1"></i> Comments (5)
+
+                </a>
+
+            </span>
+
+        </p>
+        <input class="form-control form-control-sm" type="text" placeholder="Type a comment">*@
+
+    </div>
+}

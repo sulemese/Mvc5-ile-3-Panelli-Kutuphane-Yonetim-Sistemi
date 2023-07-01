@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LIBRARYDBModelStoreContainer" CdmEntityContainer="LIBRARYDBEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="LIBRARYDBModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="LIBRARYDBModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="LIBRARYDBModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="LIBRARYDBModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LIBRARYDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="LIBRARYDBModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LIBRARYDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="LIBRARYDBModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="LIBRARYDBModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="TBL_ABOUT">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_ABOUT">
+        <MappingFragment StoreEntitySet="TBL_ABOUT">
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_AUTHOR">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_AUTHOR">
+        <MappingFragment StoreEntitySet="TBL_AUTHOR">
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_BOOK">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_BOOK">
+        <MappingFragment StoreEntitySet="TBL_BOOK">
+          <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="LANGUAGEID" ColumnName="LANGUAGEID" />
+          <ScalarProperty Name="PRINTYEAR" ColumnName="PRINTYEAR" />
+          <ScalarProperty Name="PAGE" ColumnName="PAGE" />
+          <ScalarProperty Name="PUBLISHERID" ColumnName="PUBLISHERID" />
+          <ScalarProperty Name="LIBRARYID" ColumnName="LIBRARYID" />
+          <ScalarProperty Name="AUTHORID" ColumnName="AUTHORID" />
+          <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_CATEGORY">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_CATEGORY">
+        <MappingFragment StoreEntitySet="TBL_CATEGORY">
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_CONTACT">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_CONTACT">
+        <MappingFragment StoreEntitySet="TBL_CONTACT">
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+          <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+          <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_DEPOSIT">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_DEPOSIT">
+        <MappingFragment StoreEntitySet="TBL_DEPOSIT">
+          <ScalarProperty Name="TRANSACTIONSTATUS" ColumnName="TRANSACTIONSTATUS" />
+          <ScalarProperty Name="USERGETTIME" ColumnName="USERGETTIME" />
+          <ScalarProperty Name="ENDTIME" ColumnName="ENDTIME" />
+          <ScalarProperty Name="STARTTIME" ColumnName="STARTTIME" />
+          <ScalarProperty Name="LIBRARYID" ColumnName="LIBRARYID" />
+          <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="BOOKID" ColumnName="BOOKID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_EMPLOYEE">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_EMPLOYEE">
+        <MappingFragment StoreEntitySet="TBL_EMPLOYEE">
+          <ScalarProperty Name="TELEPHONENUM" ColumnName="TELEPHONENUM" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="LIBRARYID" ColumnName="LIBRARYID" />
+          <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_LANGUAGE">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_LANGUAGE">
+        <MappingFragment StoreEntitySet="TBL_LANGUAGE">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_LIBRARY">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_LIBRARY">
+        <MappingFragment StoreEntitySet="TBL_LIBRARY">
+          <ScalarProperty Name="TELEPHONENUM" ColumnName="TELEPHONENUM" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PUBLISHER">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_PUBLISHER">
+        <MappingFragment StoreEntitySet="TBL_PUBLISHER">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_USER">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_USER">
+        <MappingFragment StoreEntitySet="TBL_USER">
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="SCHOOL" ColumnName="SCHOOL" />
+          <ScalarProperty Name="TELEPHONENUM" ColumnName="TELEPHONENUM" />
+          <ScalarProperty Name="PHOTOGRAPH" ColumnName="PHOTOGRAPH" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_TILL">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_TILL">
+        <MappingFragment StoreEntitySet="TBL_TILL">
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PUNISHMENT">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_PUNISHMENT">
+        <MappingFragment StoreEntitySet="TBL_PUNISHMENT">
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="ENDTIME" ColumnName="ENDTIME" />
+          <ScalarProperty Name="STARTTIME" ColumnName="STARTTIME" />
+          <ScalarProperty Name="DEPOSITID" ColumnName="DEPOSITID" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ENFAZLAKITAPYAZAR" FunctionName="LIBRARYDBModel.Store.ENFAZLAKITAPYAZAR" />
+    <FunctionImportMapping FunctionImportName="ENBASARILIPERSONEL" FunctionName="LIBRARYDBModel.Store.ENBASARILIPERSONEL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LIBRARYDBModel.ENBASARILIPERSONEL_Result">
+          <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ENCOKOKUNANKITAP" FunctionName="LIBRARYDBModel.Store.ENCOKOKUNANKITAP" />
+    <FunctionImportMapping FunctionImportName="ENAKTIFUYE" FunctionName="LIBRARYDBModel.Store.ENAKTIFUYE" />
+    <FunctionImportMapping FunctionImportName="BUGUNKU_EMANETLER" FunctionName="LIBRARYDBModel.Store.BUGUNKU_EMANETLER" />
+    <FunctionImportMapping FunctionImportName="EN_IYI_YAYINEVI" FunctionName="LIBRARYDBModel.Store.EN_IYI_YAYINEVI" />
+    <EntitySetMapping Name="TBL_MESSAGES">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_MESSAGES">
+        <MappingFragment StoreEntitySet="TBL_MESSAGES">
+          <ScalarProperty Name="TARİH" ColumnName="TARİH" />
+          <ScalarProperty Name="ICERIK" ColumnName="ICERIK" />
+          <ScalarProperty Name="KONU" ColumnName="KONU" />
+          <ScalarProperty Name="ALICI" ColumnName="ALICI" />
+          <ScalarProperty Name="GÖNDEREN" ColumnName="GÖNDEREN" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_NOTIFICATION">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_NOTIFICATION">
+        <MappingFragment StoreEntitySet="TBL_NOTIFICATION">
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+          <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_ADMİN">
+      <EntityTypeMapping TypeName="LIBRARYDBModel.TBL_ADMİN">
+        <MappingFragment StoreEntitySet="TBL_ADMİN">
+          <ScalarProperty Name="AUTHORITY" ColumnName="AUTHORITY" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

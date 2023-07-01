@@ -1,0 +1,32 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_NOTIFICATION
+@{
+    ViewBag.Title = "DuyuruDetay";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>DuyuruDetay</h2>
+
+@using (Html.BeginForm("DuyuruGüncelle", "Notification", FormMethod.Post))
+{
+    <div style=" margin-bottom:15px"></div>
+    <div class=" =" form-group>
+        @Html.HiddenFor(m => m.ID)
+    </div>
+    <div class=" form-group">
+        <label>Duyuru Kategorisi</label>
+        @Html.TextBoxFor(m => m.CATEGORY, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>İçerik</label>
+        @Html.TextAreaFor(m => m.CONTENT, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Tarih</label>
+        @Html.TextBoxFor(m => m.DATE, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning" href="/Notification/DuyuruGüncelle/">GÜNCELLE</button>  @*güncelle butonu*@
+    </div>
+
+}
+

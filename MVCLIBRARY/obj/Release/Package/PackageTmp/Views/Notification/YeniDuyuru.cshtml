@@ -1,0 +1,27 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_NOTIFICATION
+@{
+    ViewBag.Title = "YeniDuyuru";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@using (Html.BeginForm("YeniDuyuru", "Notification", FormMethod.Post))  //metod post olduğunda formda girilenleri vtye yükler.
+{
+    <div style=" margin-bottom:15px"></div>
+    <div class=" =" form-group>
+        @Html.HiddenFor(a => a.ID)
+    </div>
+    <div class=" form-group">
+        <label>Kategori</label>
+        @Html.TextBoxFor(a => a.CATEGORY, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>İçerik</label>
+        @Html.TextBoxFor(a => a.CONTENT, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Tarih</label>
+        @Html.TextBoxFor(a => a.DATE, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Duyuruyu Ekle</button>  @*güncelle butonu*@
+    </div>
+}

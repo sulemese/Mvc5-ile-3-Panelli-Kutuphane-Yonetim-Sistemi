@@ -1,0 +1,103 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 240px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #e9e5e5;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    color: #0094ff;
+                }
+
+        .main {
+            margin-left: 240px; /* Same as the width of the sidenav */
+            padding: 0px 10px;
+        }
+
+        @@media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+                .sidebar a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+
+        <a href="/Statistic/Index"><i class="glyphicon glyphicon-home">&nbsp;Ana Sayfa</i></a>
+        <a href="/Category/Index/"><i class="glyphicon glyphicon-list">&nbsp;Kategoriler</i></a>
+        <a href="/Book/Index/"><i class="glyphicon glyphicon-book">&nbsp;Kitaplar</i></a>
+        <a href="/Author/Index/"><i class="glyphicon glyphicon-pencil">&nbsp;Yazarlar</i></a> @*Author controller ı içindeki Index ActionResult ına gitsin.*@
+        <a href="/User/Index/"><i class="glyphicon glyphicon-user">&nbsp;Üyeler</i></a>
+        <a href="/Employee/Index/"><i class="glyphicon glyphicon-tower">&nbsp;Personeller</i></a>
+
+        @if (User.IsInRole("1.Seviye"))  //SADECE 1.SEVİYE KULLANICILAR MENÜDE BU KISIMI GÖRÜR (ROL BAZINDA MENÜ GİZLEME)
+        {
+        <a href="/Deposit/DepositGive/"><i class="glyphicon glyphicon-circle-arrow-right">&nbsp;Ödünç Kitap Ver</i></a>
+        }
+
+        @if (User.IsInRole("1.Seviye"))  //SADECE 1.SEVİYE KULLANCILAR MENÜDE BU KISIMI GÖRÜR (ROL BAZINDA MENÜ GİZLEME)
+        {
+        <a href="/Deposit/Index/"><i class="glyphicon glyphicon-circle-arrow-left">&nbsp;Ödünç Kitap Al</i></a>
+        }
+
+        <a href="/Punishment/Index/"><i class="glyphicon glyphicon-circle-arrow-left">&nbsp;Ceza Öde</i></a>
+        <a href="/Process/Index/"><i class="glyphicon glyphicon-circle-arrow-left">&nbsp;İşlemler</i></a>
+        <a href="/Notification/Index/"><i class="glyphicon glyphicon-phone">&nbsp;Duyurular</i></a>
+        <a href="/Statistic/Hava/"><i class="glyphicon glyphicon-cloud">&nbsp;Hava Raporu</i></a>
+        <a href="/Statistic/HavaKart/"><i class="glyphicon glyphicon-plus">&nbsp;Hava Kartları</i></a>
+        <a href="/Statistic/Galeri/"><i class="glyphicon glyphicon-gift">&nbsp;Galeri</i></a>
+        <a href="/Statistic/Index/"><i class="glyphicon glyphicon-sort">&nbsp;İstatistikler</i></a>
+        <a href="/Statistic/LinqKart/"><i class="glyphicon glyphicon-bookmark">&nbsp;Bülten</i></a>
+        <a href="/Vitrine/Index/"><i class="glyphicon glyphicon-gift">&nbsp;Vitrin</i></a>
+        <a href="/Grafik/Index/"><i class="glyphicon glyphicon-console">&nbsp;Grafikler</i></a>
+
+        @if (User.IsInRole("1.Seviye")) //SADECE 1.SEVİYE KULLANICILAR MENÜDE BU KISIMI GÖRÜR (ROL BAZINDA MENÜ GİZLEME)
+        {
+        <a href="/Settings/Index/"><i class="glyphicon glyphicon-cog">&nbsp;Ayarlar</i></a>
+        }
+
+        <a href="/Panel/LogOut/"><i class="glyphicon glyphicon-remove-sign">&nbsp;Çıkış</i></a>
+
+
+    </div>
+
+    <div class="main">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_AUTHOR>
+@{
+    ViewBag.Title = "RemovedAuthorIndex";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+@*Sayfaya başlık eklendi.*@
+<h2>SİLİNEN YAZARLAR</h2>
+
+
+
+@*Kayıtların listelenmesi için bir tablo oluşturuldu *@
+<table class="table table-dark table-striped table-hover">
+
+    @* Yazar tablosunun  sütun başlıkları tanımlandı. *@
+    <tr style="background-color:#3159b5;color:#ffffff">
+        <th width="200">ID</th>                @*yazarın ıd'si'*@
+        <th width="400">ADI</th>       @* yazarın adı soyadı*@
+        <th width="300">KİTAPLARI</th> @* yazarın kitapları butonu*@
+        <th>GERİ YÜKLE</th>
+    </tr>
+
+
+    @*kayıtlar için teker teker yazmak uzun olacağından foreach döngüsü ile veritabanındaki kayıt sayısı kadar bu döngü dönecek. *@
+    @foreach(var author in Model)
+            {
+                <tr>
+                    <td>@author.ID</td>
+                    <td style="text-align:justify">@author.NAME&nbsp;@author.SURNAME</td>
+                    <td><a href="/Author/AuthorBook/@author.ID" class="btn btn-success">Kitaplar</a></td>
+                    <td><a href="/Author/AuthorAddBack/@author.ID" class="btn btn-success">Geri Yükle</a></td>
+                </tr>
+            }
+</table>
+

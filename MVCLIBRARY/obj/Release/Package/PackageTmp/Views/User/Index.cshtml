@@ -1,0 +1,84 @@
+﻿@using MVCLIBRARY.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBL_USER>
+
+
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+
+@*Sayfaya başlık eklendi.*@
+<h2>Üyeler</h2>
+
+
+
+
+
+
+
+@*Arama kutusu ile ilgili kısım*@
+@*Bu form metod get olduğunda yani veri girişi olduğunda User adlı  controller içindeki Index adlı metod çalışacak. *@
+@using (Html.BeginForm("Index", "User", FormMethod.Get))
+{
+    @*margin-bottom özelliği elementin alt kenar boşluğunu belli bir değer kadar veya yüzde olarak belirler.*@
+    <div style="margin-bottom:15px">
+        @*Başlık eklendi. *@
+        <b>Kullanıcı Adını Girin:</b>
+        @*textbox eklendi.*@
+        @Html.TextBox("p")
+        @*onay butonu eklendi. değeri ise "Ara" olarak belirlendi. *@
+        <input type="submit" value="Ara" />
+    </div>
+}
+
+
+
+
+
+
+@*Kayıtların listelenmesi için bir tablo oluşturuldu *@
+<table class="table table-bordered table-dark  table-hover">
+
+    @*tablonun başlık satırı içindeki sütunlar tanımlandı. *@
+    <tr style="background-color:#3159b5;color:#ffffff">
+        <th style="text-align:center">ID</th>
+        <th style="text-align:center">ÜYE ADI</th>
+        <th style="text-align:center">OKUDUĞU OKUL</th>
+        <th style="text-align:center">SİL</th>
+        <th style="text-align:center">GÜNCELLE</th>
+        <th style="text-align:center">KİTAP GEÇMİŞİ</th>
+    </tr>
+
+
+    @*Bütün kayıtlar için satır ve sütunları tanımlamak mantıksız olacağından foreach döngüsü içinde satır ve onun sütunları tanımlandı. *@
+    @*Bu döngü kayıt sayısı kadar dönecek ve kayıt sayısı kadar tabloya satır ekleyecek. *@
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.ID</td>
+            <td>@user.NAME&nbsp;@user.SURNAME</td>
+            <td>@user.SCHOOL </td>
+            <td>@Html.ActionLink("SİL", "UserDelete", new { id = user.ID }, new { @class = "btn btn-danger", onclick = "return confirm('SİLMEK İSTİYOR MUSUNUZ?')" })</td>
+            <td><a href="/User/UserGet/@user.ID" class="btn btn-success">GÜNCELLE</a></td>
+            <td><a href="/User/UserBookDetail/@user.ID" class="btn btn-success" style="background-color:lightseagreen">KİTAP GEÇMİŞİ</a></td>
+        </tr>
+    }
+</table>
+
+
+@*Paged list için*@
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+
+@*Sayfanın en altında YENİ ÜYE EKLE butonu/linki yer alır. Bu linke tıklandığında User adlı controllerın UserAdd() metodu çalışır. *@
+<a class="btn btn-primary" href="/User/UserAdd">YENİ ÜYE EKLE</a>
+
+@*Sayfanın en altında SİLİNEN ÜYELER butonu/linki yer alır. Bu linke tıklandığında User adlı controllerın RemovedUserIndex() metodu çalışır. *@
+<a href="/User/RemovedUserIndex/" class="btn btn-primary">SİLİNEN ÜYELER</a>

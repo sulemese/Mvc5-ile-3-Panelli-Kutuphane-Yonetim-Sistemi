@@ -1,0 +1,31 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_AUTHOR
+@{
+    ViewBag.Title = "AuthorAdd";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    <div style="margin-top:15px">
+        @*yazar adı bilgisini textboxtan alır.*@
+        <label>Yazar Adı</label>
+        @Html.TextBoxFor(author => author.NAME, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        @*yazar soyadı bilgisini textboxtan alır.*@
+        <label>Soyadı</label>
+        @Html.TextBoxFor(author => author.SURNAME, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        @*yazar detayı bilgisini textboxtan alır.*@
+        <label>Detay Bilgileri</label>
+        @Html.TextAreaFor(author => author.DETAIL, new { @class = "form-control" })
+    </div>
+@*------------------------------------------------------------------------------------------*@
+    <div style="margin-top:15px">
+        @* bilgileri girdikten sonra tıklanacak yazarı ekle butonu*@
+        <button class="btn btn-info" id="Btn1">YAZAR EKLE</button>
+    </div>
+@*------------------------------------------------------------------------------------------*@
+</form>
+

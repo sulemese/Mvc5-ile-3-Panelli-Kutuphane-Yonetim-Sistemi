@@ -1,0 +1,36 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_ADMİN
+@{
+    ViewBag.Title = "UpdateAdmin";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateAdmin", "Settings", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+
+        <div style="margin-bottom:15px">
+            @Html.HiddenFor(m => m.ID)
+        </div>
+
+        <div style="margin-bottom:15px">
+            <label>Kullanıcı Adı</label>
+            @Html.TextBoxFor(m => m.USERNAME, new { @class = "form-control" })
+        </div>
+
+        <div style="margin-bottom:15px">
+            <label>Şifre</label>
+            @Html.TextBoxFor(m => m.PASSWORD, new { @class = "form-control" })
+        </div>
+
+        <div style="margin-bottom:15px">
+            <label>Yetki</label>
+            @Html.TextBoxFor(m => m.AUTHORITY, new { @class = "form-control" })
+        </div>
+
+        <button class="btn btn-warning">GÜNCELLE</button>
+    </div>
+}
+
+
+

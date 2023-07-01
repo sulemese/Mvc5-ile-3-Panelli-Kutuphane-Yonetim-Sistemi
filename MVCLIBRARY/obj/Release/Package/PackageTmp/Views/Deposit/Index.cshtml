@@ -1,0 +1,33 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_DEPOSIT>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<h2 style="text-align:center">Ödünç Kitaplar Sayfası</h2>
+@*-------------------------------------------------------------------*@
+<table class="table table-bordered table-dark table-striped table-hover">
+    <tr style="background-color:#3159b5;color:#ffffff">
+        <th>İŞLEM ID</th>
+        <th>KİTAP ADI</th>
+        <th>ÜYE ADI</th>
+        <th>PERSONEL ADI</th>
+        <th>KÜTÜPHANE ADI</th>
+        <th>ALIŞ TARİHİ</th>
+        <th>İADE TARİHİ</th>
+        <th>KİTABI İADE ET</th>
+    </tr>
+    @foreach (var deposit in Model)
+    {
+<tr>
+    <td>@deposit.ID</td>
+    <td>@deposit.TBL_BOOK.NAME</td>
+    <td>@deposit.TBL_USER.NAME&nbsp;@deposit.TBL_USER.SURNAME</td>
+    <td>@deposit.TBL_EMPLOYEE.NAME&nbsp @deposit.TBL_EMPLOYEE.SURNAME</td>
+    <td>@deposit.TBL_BOOK.TBL_LIBRARY.NAME</td>
+    <td>@Convert.ToDateTime(deposit.STARTTIME).ToString("dd/MM/yyyy")</td>  @*convert yapmamızın sebebi tarihin yanında saatin de gözükmesini engellemek için.*@
+    <td>@Convert.ToDateTime(deposit.ENDTIME).ToString("dd/MM/yyyy")</td>
+    <td><a href="/Deposit/DepositBack/@deposit.ID" class="btn btn-default" style="background-color: #64d8ca; color: white">KİTABI İADE ET</a></td>
+</tr>}
+
+</table>

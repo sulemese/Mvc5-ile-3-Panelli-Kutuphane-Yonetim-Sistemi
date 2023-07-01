@@ -1,0 +1,42 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_EMPLOYEE
+@{
+    ViewBag.Title = "EmployeeGet";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("EmployeeUpdate", "Employee", FormMethod.Post))
+{
+    <div style=" margin-bottom:15px"></div>
+    <div class=" =" form-group>
+        @Html.HiddenFor(m => m.ID)
+    </div>
+    <div class=" form-group">
+        <label>Personel Adı</label>
+        @Html.TextBoxFor(employee => employee.NAME, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Soyadı</label>
+        @Html.TextBoxFor(employee => employee.SURNAME, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Telefon Numarası</label>
+        @Html.TextBoxFor(employee => employee.TELEPHONENUM, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Mail Adresi</label>
+        @Html.TextBoxFor(employee => employee.MAIL, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Adres</label>
+        @Html.TextBoxFor(employee => employee.ADDRESS, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Çalıştığı Kütüphane</label>
+
+        @Html.DropDownListFor(employee => employee.TBL_LIBRARY.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">GÜNCELLE</button>  @*güncelle butonu*@
+    </div>
+
+}
